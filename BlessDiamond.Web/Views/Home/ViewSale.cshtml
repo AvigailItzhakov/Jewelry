@@ -1,0 +1,33 @@
+﻿@using BlessDiamond.Data
+@model Sale
+
+<h4> Sale # @Model.ProductId </h4>
+<div class="container">
+    <table style=" font-size:large;" class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>Date Posted</th>
+            <th>Amount</th>
+            <th>Total Due</th>
+        </tr>
+
+
+
+        @foreach (History h in Model.History)
+        {
+            <tr>
+                <td>@h.Date</td>
+                <td>@h.Amount</td>
+                <td>@Model.ProductId</td>
+            </tr>
+
+        }
+    </table>
+</div>
+<input type="text" class="form-control" name="amount" id="amount" placeholder="Add a payment" />
+<input type="hidden" id="buyerid" name="id" value="@Model.ProductId"/>
+<button class="btn btn-success " id="submitPaymentBtn">Submit Payment </button>
+
+@section scripts {
+    <script src="~/JavaScript.js"></script>
+}
+
